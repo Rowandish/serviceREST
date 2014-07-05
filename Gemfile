@@ -22,6 +22,7 @@ group :development, :test do
 	gem 'guard'
 	gem 'guard-brakeman'
 	gem 'brakeman'
+	gem 'devise'
 	gem 'guard-rspec'
 	gem 'factory_girl_rails'
 	gem 'rspec_api_test'
