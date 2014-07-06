@@ -12,7 +12,7 @@ gem 'apipie-rails'
 # gem 'maruku'
 
 gem 'jbuilder'
-
+gem 'simple_token_authentication'
 
 group :development, :test do
 	gem 'rspec-rails'
