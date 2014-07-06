@@ -220,3 +220,4 @@ DEPENDENCIES
   simple_token_authentication
   spring
   sqlite3
+  warden (= 1.2.3)
