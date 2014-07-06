@@ -15,6 +15,7 @@ gem 'jbuilder'
 gem 'warden', '1.2.3'
 gem 'devise'
 gem 'simple_token_authentication'
+gem 'cancan'
 
 
 group :development, :test do
@@ -28,6 +29,7 @@ group :development, :test do
 	gem 'guard-rspec'
 	gem 'factory_girl_rails'
 	gem 'rspec_api_test'
+  	gem 'pry'
 end
 
 
