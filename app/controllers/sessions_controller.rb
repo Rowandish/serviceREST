@@ -5,16 +5,11 @@ class SessionsController < Devise::SessionsController
       sign_in(resource_name, resource)
    
       current_user.update authentication_token: nil
-   
-      respond_to do |format|
-        format.json {
-          render :json => {
-            :user => current_user,
-            :status => :ok,
-            :authentication_token => current_user.authentication_token
-          }
-        }
-      end
+      render :json => {
+        :user => current_user,
+        :authentication_token => current_user.authentication_token
+      }, status: :ok
+      
   end
 
 # DELETE /resource/sign_out

@@ -3,7 +3,7 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.create(user_params)
     if @user.save
-      render :json => @user, status: :created
+      render :json => {:token => @user.authentication_token}, status: :created
     else
       render :json => @user.errors, status: :unprocessable_entity
     end

@@ -5,8 +5,6 @@ describe RegistrationsController, :type => :controller do
 
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
-      # user = create(:user)
-      # sign_in user
     end
     
     describe (".create") do
@@ -14,7 +12,7 @@ describe RegistrationsController, :type => :controller do
         post :create, {user:{email: "mail@mail.com", password: "password", username: "ok_username"}}, format: :json
         expect(response.status).to eq(201)
         user_info = JSON.parse(response.body)
-        expect(user_info["username"]).to eq("ok_username")
+        expect(user_info["token"]).to be_truthy
         expect(User.last.username).to eq("ok_username")
       end
 
