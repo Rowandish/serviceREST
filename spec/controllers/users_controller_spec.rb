@@ -14,15 +14,15 @@ describe UsersController, :type => :controller do
           expect(response.status).to eq(200)
           user_info = JSON.parse(response.body)
           expect(user_info["authentication_token"]).to be_truthy
-          expect(User.where(username: "user_logged").select("id").map(&:id)[0]).to eq(user_info["id"])
-          #Voglio avere il numero secco dell'id di user logged, questo metodo fa funzionare le cose ma è obsceno
+          expect(User.find_by_username("user_logged").id).to eq(user_info["id"])
         end
       end
       context("when no user logged in") do
-        before {sign_in_nobody}
+        before {sign_out User.new}
         it ("should return error response") do
-          get :show
-          expect(response.status).to eq(422)
+          expect{ get :show }.to raise_exception("uncaught throw :warden")
+          # get :show
+          # expect(response.status).to eq(422)
         end
 
       end
