@@ -10,13 +10,13 @@ describe SessionsController, type: :controller do
   describe 'Session' do
     
     describe (".create") do
-      # context (" ,when user is logged in, ") do
-      #   before {sign_in_user}
-      #   it ("return error response") do 
-      #     get :create
-      #     expect(response.status).to eq(422)
-      #   end
-      # end
+      context (" ,when user is logged in, ") do
+        before {sign_in_user}
+        it ("return error response") do 
+          get :create
+          expect(response.status).to eq(422)
+        end
+      end
 
       context(",when no users is logged in, ") do
         before {sign_out :user}
