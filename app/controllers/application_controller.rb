@@ -7,11 +7,4 @@ class ApplicationController < ActionController::Base
     method = "#{resource}_params"
     params[resource] &&= send(method) if respond_to?(method, true)
   end
-  
-  rescue_from CanCan::AccessDenied do |exception|  
-    respond_to do |format|  
-      format.json { render :json=> exception.to_json, :status => :forbidden }  
-    end   
-  end
-
 end

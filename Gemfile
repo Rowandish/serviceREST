@@ -15,7 +15,6 @@ gem 'jbuilder'
 gem 'warden', '1.2.3'
 gem 'devise'
 gem 'simple_token_authentication'
-gem 'cancan'
 gem 'omniauth'
 gem 'omniauth-facebook'
 

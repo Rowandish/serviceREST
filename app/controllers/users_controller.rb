@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
 	def show
-		# print current_user.inspect
-		render json: current_user
+		if current_user.id.nil?
+			render json: {}, status: :unprocessable_entity
+		else
+			render json: current_user, status: :ok
+		end
 	end
 end
 
