@@ -6,7 +6,6 @@ class SessionsController < Devise::SessionsController
       else
         self.resource = warden.authenticate!(auth_options)
         sign_in(resource_name, resource)
-        print current_user.inspect
         render :json => {
                       :user => current_user,
                       :authentication_token => current_user.authentication_token
@@ -17,10 +16,11 @@ class SessionsController < Devise::SessionsController
   # DELETE /resource/sign_out
   def destroy
        if current_user
+         # current_user.update authentication_token: nil
+         # print current_user.inspect         
          current_user.update authentication_token: nil
-         print current_user.inspect
          Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
-         # render :json => {}, status: :ok
+         render :json => {}, status: :ok
        else
          render :json => {}, status: :unprocessable_entity
        end

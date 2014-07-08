@@ -4,7 +4,7 @@ require 'rails_helper'
 #curl -i -H "Accept: application/json" -H "Content-type: application/json" -H "X-User-Email: $EMAIL" -H "X-User-Token: $TOKEN"  -X GET $ROOT_URL/me.json
           
 
-describe UsersController, :type => :controller do
+describe UsersController, type: :controller do
   describe 'User' do
     describe (".show") do
       context ("when logged in") do
@@ -18,11 +18,10 @@ describe UsersController, :type => :controller do
         end
       end
       context("when no user logged in") do
-        before {sign_out User.new}
+        before { sign_out_user }
         it ("should return error response") do
-          expect{ get :show }.to raise_exception("uncaught throw :warden")
-          # get :show
-          # expect(response.status).to eq(422)
+          get :show
+          expect(response.status).to eq(422)
         end
 
       end
