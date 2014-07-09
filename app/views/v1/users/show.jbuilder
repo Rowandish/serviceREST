@@ -9,5 +9,9 @@ if current_user.has_buildings?
 		json.name = building.name
 		json.level = building.level
 		json.created_at = building.created_at
+		json.rank = building.rank
+		json.max_monster = building.max_monster
+		json.max_level = building.max_level
+		json.speed = building.speed
 	end
 end

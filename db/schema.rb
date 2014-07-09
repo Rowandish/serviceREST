@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140709161911) do
+ActiveRecord::Schema.define(version: 20140709165138) do
 
   create_table "buildings", force: true do |t|
     t.datetime "created_at"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20140709161911) do
     t.integer  "rank"
     t.integer  "speed"
     t.integer  "max_level"
+    t.integer  "monster_max"
   end
 
   create_table "userbuildings", force: true do |t|

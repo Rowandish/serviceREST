@@ -17,6 +17,10 @@ module V1
 			end
 		end
 
+		def create_building
+			current_user.userbuildings.create(building_id: params["building_id"],level:1)
+		end
+
 		def has_building?
 			current_user.buildings.nil?
 		end

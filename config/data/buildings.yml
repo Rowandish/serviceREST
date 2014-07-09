@@ -2,20 +2,24 @@
   name: Building 1
   speed: 2
   max_level: 10
+  max_monster: 7
   rank: 4
 - id: 2
   name: Building 2
   speed: 5
   max_level: 15
+  max_monster: 15
   rank: 1
 - id: 3
   name: Building 3
   speed: 3
   max_level: 10
+  max_monster: 1
   rank: 2
 - id: 4
   name: Building 4
   speed: 10
   max_level: 5
+  max_monster: 3
   rank: 5
 
