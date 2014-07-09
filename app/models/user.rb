@@ -7,5 +7,5 @@ class User < ActiveRecord::Base
 	validates :username, :email, uniqueness: true
 	
 	has_many :userbuildings
-	has_many :buildings, through: :userbuildings
+	# has_many :buildings, through: :userbuildings
 end

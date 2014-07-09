@@ -11,18 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140709003709) do
+ActiveRecord::Schema.define(version: 20140709161911) do
 
   create_table "buildings", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
     t.integer  "rank"
+    t.integer  "speed"
+    t.integer  "max_level"
   end
 
-  create_table "userbuildings", id: false, force: true do |t|
-    t.integer "user_id"
-    t.integer "building_id"
+  create_table "userbuildings", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "building_id"
+    t.integer  "level"
+    t.datetime "time_creation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

@@ -16,6 +16,10 @@ module V1
 				render json: {}, status: :unprocessable_entity
 			end
 		end
+
+		def has_building?
+			current_user.buildings.nil?
+		end
 	end
 end
 
