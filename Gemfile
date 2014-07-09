@@ -12,6 +12,13 @@ gem 'apipie-rails'
 # gem 'maruku'
 
 gem 'jbuilder'
+gem 'warden', '1.2.3'
+gem 'devise'
+gem 'simple_token_authentication'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'static_model'
+
 
 
 group :development, :test do
@@ -22,10 +29,10 @@ group :development, :test do
 	gem 'guard'
 	gem 'guard-brakeman'
 	gem 'brakeman'
-	gem 'devise'
 	gem 'guard-rspec'
 	gem 'factory_girl_rails'
 	gem 'rspec_api_test'
+  	gem 'pry'
 end
 
 
