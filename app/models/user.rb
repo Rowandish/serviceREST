@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 	has_many :userbuildings
 	# has_many :buildings, through: :userbuildings
 
-	def has_buildings?(user)
-		user and user.buildings.nil?
+	def has_buildings?
+		self.buildings.nil?
 	end
 end
