@@ -3,8 +3,11 @@ Rails.application.routes.draw do
 
   namespace :v1, defaults: {format: 'json'} do
   	# resources :users, only: [:show, :destroy]
-  	resources :buildings, only: [:index, :create, :destroy]
-	get 'me', to: 'users#show'
-	get 'remove_user', to: 'users#destroy'
+  	get 'users/me', to: 'users#show'
+	delete 'users/remove_me', to: 'users#destroy'
+  	resources :buildings, except: [:edit, :new], path: 'users/me/buildings'
+  	# post '/me/buildings/:static_building_id/', to: 'building#create'
+  	
+	
   end
 end

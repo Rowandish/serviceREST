@@ -17,13 +17,11 @@ module V1
 			end
 		end
 
-		def create_building
-			current_user.userbuildings.create(building_id: params["building_id"],level:1)
-		end
 
-		def has_building?
-			current_user.buildings.nil?
-		end
+		# #Da spostare in v1/me/buildings
+		# def create_building
+		# 	current_user.userbuildings.create(static_building_id: params["building_id"],level:1)
+		# end
 	end
 end
 
