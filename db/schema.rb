@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140709165138) do
+ActiveRecord::Schema.define(version: 20140709233822) do
 
   create_table "buildings", force: true do |t|
     t.datetime "created_at"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20140709165138) do
     t.datetime "time_creation"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "map_index"
   end
 
   create_table "users", force: true do |t|
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 20140709165138) do
     t.datetime "updated_at"
     t.string   "authentication_token"
     t.string   "username"
+    t.integer  "money"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token"

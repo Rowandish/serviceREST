@@ -15,7 +15,6 @@ describe V1::UsersController, type: :controller do
           get :show
           expect(response.status).to eq(200)
           user_info = JSON.parse(response.body)
-          print user_info.inspect
           expect(user_info["general_infos"]["token"]).to be_truthy
           expect(User.find_by_username("user_logged").email).to eq(user_info["general_infos"]["email"])
         end
