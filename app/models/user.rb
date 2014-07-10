@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 	validates :username, :password, :email, presence: true
 	validates :username, :email, uniqueness: true
 
-	before_create :initialize_money
+	before_create :initialize_user
 	
 	has_many :userbuildings
 	# has_many :buildings, through: :userbuildings
@@ -15,9 +15,10 @@ class User < ActiveRecord::Base
 		self.buildings.nil?
 	end
 
-	protected
+	private
 	
-	def initialize_money
+	def initialize_user
 		self.money = Settings.user.initial_money
+		self.level = Settings.user.initial_level
 	end
 end

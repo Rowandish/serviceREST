@@ -16,6 +16,7 @@ describe RegistrationsController, type: :controller do
           expect(user_info["token"]).to be_truthy
           expect(User.last.username).to eq("ok_username")
           expect(User.last.money).to eq(Settings.user.initial_money)
+          expect(User.last.level).to eq(Settings.user.initial_level)
         end
       end
 
