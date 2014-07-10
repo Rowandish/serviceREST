@@ -1,5 +1,5 @@
 module V1
-	class UserBuildingsController < ApplicationController
+	class BuildingsController < ApplicationController
 		# before_action :get_static_building, only: [:show, :update, :destroy]
 		# def get_static_building
 		# 	@building = StaticBuilding.find(params[:id])
