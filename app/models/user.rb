@@ -8,8 +8,7 @@ class User < ActiveRecord::Base
 
 	before_create :initialize_user
 	
-	has_many :userbuildings
-	# has_many :buildings, through: :userbuildings
+	has_many :buildings
 
 	def has_buildings?
 		self.buildings.nil?

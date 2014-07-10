@@ -1,4 +1,4 @@
-class Building < StaticModel::Base
-	has_many :userbuildings
-  	# has_many :users, through: :userbuildings
+class Building  < ActiveRecord::Base
+	belongs_to :user, :foreign_key => 'user_id'
+	belongs_to :static_building, :foreign_key => 'building_id'
 end

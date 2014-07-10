@@ -11,19 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140710001332) do
+ActiveRecord::Schema.define(version: 20140710014932) do
 
   create_table "buildings", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-    t.integer  "rank"
-    t.integer  "speed"
-    t.integer  "max_level"
-    t.integer  "monster_max"
-  end
-
-  create_table "userbuildings", force: true do |t|
     t.integer  "user_id"
     t.integer  "building_id"
     t.integer  "level"
@@ -31,6 +21,16 @@ ActiveRecord::Schema.define(version: 20140710001332) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "map_index"
+  end
+
+  create_table "static_buildings", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.integer  "rank"
+    t.integer  "speed"
+    t.integer  "max_level"
+    t.integer  "monster_max"
   end
 
   create_table "users", force: true do |t|

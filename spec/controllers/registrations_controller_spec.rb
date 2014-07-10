@@ -20,22 +20,22 @@ describe RegistrationsController, type: :controller do
         end
       end
 
-      # context("when parameters are not correct, ") do
-      #   it ("should respond with an error when mail or username is duplicate") do
-      #     create(:user, email: "duplicate_mail@mail.com", username: "duplicate_username")
-      #     post :create, {user:{email: "duplicate_mail@mail.com", password: "password", username: "ok_username"}}
-      #     expect(response.status).to eq(422)
-      #     post :create, {user:{email: "mail@mail.com", password: "password", username: "duplicate_username"}}
-      #     expect(response.status).to eq(422)
-      #   end
+      context("when parameters are not correct, ") do
+        it ("should respond with an error when mail or username is duplicate") do
+          create(:user, email: "duplicate_mail@mail.com", username: "duplicate_username")
+          post :create, {user:{email: "duplicate_mail@mail.com", password: "password", username: "ok_username"}}
+          expect(response.status).to eq(422)
+          post :create, {user:{email: "mail@mail.com", password: "password", username: "duplicate_username"}}
+          expect(response.status).to eq(422)
+        end
 
-      #   it ("should respond with an error when username is nil ot too short") do
-      #     post :create, {user:{email: "mail@mail.com", password: "password", username: nil}}
-      #     expect(response.status).to eq(422)
-      #     post :create, {user:{email: "mail@mail.com", password: "password", username: "short"}}
-      #     expect(response.status).to eq(422)
-      #   end
-      # end
+        it ("should respond with an error when username is nil ot too short") do
+          post :create, {user:{email: "mail@mail.com", password: "password", username: nil}}
+          expect(response.status).to eq(422)
+          post :create, {user:{email: "mail@mail.com", password: "password", username: "short"}}
+          expect(response.status).to eq(422)
+        end
+      end
     end
   end
 end
