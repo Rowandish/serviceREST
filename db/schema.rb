@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140710014932) do
+ActiveRecord::Schema.define(version: 20140710152653) do
 
   create_table "buildings", force: true do |t|
     t.integer  "user_id"
-    t.integer  "building_id"
+    t.integer  "static_building_id"
     t.integer  "level"
     t.datetime "time_creation"
     t.datetime "created_at"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140710014932) do
     t.integer  "speed"
     t.integer  "max_level"
     t.integer  "monster_max"
+    t.integer  "max_monsters"
   end
 
   create_table "users", force: true do |t|

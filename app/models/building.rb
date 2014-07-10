@@ -1,6 +1,6 @@
 class Building  < ActiveRecord::Base
-	belongs_to :user, foreign_key: 'user_id'
-	belongs_to :static_building, foreign_key: 'building_id'
+	belongs_to :user
+	belongs_to :static_building
 
 	before_create :initialize_building
 
