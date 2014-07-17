@@ -20,6 +20,7 @@ gem 'omniauth-facebook'
 gem 'static_model'
 gem "rails_config"
 gem "active_record_bulk_insert"
+gem "rubocop"
 
 
 

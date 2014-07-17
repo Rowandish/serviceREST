@@ -1,6 +1,7 @@
 module V1
 	class BuildingsController < ApplicationController
 		before_action :get_user_buildings, only: [:index, :show, :create, :update, :destroy]
+		before_action :get_static_building, only: [:create]
 		
 		
 		def index
@@ -14,30 +15,30 @@ module V1
     	end
 
     	def create
-			#il building_id devo passarlo a mano, non tramite il path!
-			print current_user.inspect
-			@building = @buildings.create(building_params)
+			
+			if (diff = (current_user.money - @static_building.price)) > 0 
+				
+ 				print current_user.money.inspect
+				print diff.inspect
+				# current_user.update_attributes!(money: diff)
+				print current_user.money.inspect
 
-			if @building.save
-			  render json: @building, status: :created
+				@building = @buildings.create(building_params)
+
+				if @building.save!
+				  render json: @building, status: :created
+				else
+				  render json: @building.errors, status: :unprocessable_entity
+				end
 			else
-			  render json: @building.errors, status: :unprocessable_entity
+				render json: {}, status: :precondition_failed
 			end
-    	end
 
-    	def update
-    	  # @tweet = Tweet.find(params[:id])
-
-    	  # if @tweet.update(params[:tweet])
-    	  #   head :no_content
-    	  # else
-    	  #   render json: @tweet.errors, status: :unprocessable_entity
-    	  # end
     	end
 
     	def destroy
 			@buildings.find(params[:id]).destroy
-			head :no_content
+			render json:{}, status: :ok
     	end
 
     	private
@@ -45,12 +46,14 @@ module V1
 			def get_user_buildings
 				@buildings = current_user.buildings
 			end
+
+			def get_static_building
+				@static_building = Building.find_by_static_building_id(params[:building][:static_building_id]).static_building
+			end
 	    	  
 			def building_params
 	    		params.require(:building).permit(:static_building_id, :map_index)
 			end
-		
-
 	end
 end
 

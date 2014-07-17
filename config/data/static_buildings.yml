@@ -4,28 +4,33 @@
   max_level: 10
   max_monsters: 7
   rank: 4
+  price: 300
 - id: 2
   name: Building 2
   speed: 5
   max_level: 15
   max_monsters: 15
   rank: 1
+  price: 1500
 - id: 3
   name: Building 3
   speed: 3
   max_level: 10
   max_monsters: 1
   rank: 2
+  price: 1000
 - id: 4
   name: Building 4
   speed: 10
   max_level: 5
   max_monsters: 3
   rank: 5
+  price: 200
 - id: 5
   name: Building 5
   speed: 14
   max_level: 2
   max_monsters: 3
   rank: 6
+  price: 300
 

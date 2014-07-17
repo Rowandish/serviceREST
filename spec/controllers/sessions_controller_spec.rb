@@ -9,7 +9,7 @@ describe SessionsController, type: :controller do
         before {sign_in_user}
         it ("return error response") do 
           get :create
-          expect(response.status).to eq(422)
+          expect(response).to have_http_status(422)
         end
       end
 
@@ -27,7 +27,7 @@ describe SessionsController, type: :controller do
         before {sign_in_user}
         it ("user is correctly logged out") do
           get :destroy
-          expect(response.status).to eq(200)
+          expect(response).to have_http_status(200)
         end
       end
     end
