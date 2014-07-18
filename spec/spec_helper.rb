@@ -14,6 +14,9 @@ RSpec.configure do |config|
   	DatabaseCleaner.clean_with(:truncation)
   	load "#{Rails.root}/db/seeds.rb" 
 	end
+
+  ActiveRecord::Base.logger = Logger.new(STDOUT)
+
 end
 
 

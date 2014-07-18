@@ -21,15 +21,17 @@ module V1
  				print current_user.user_info.money.inspect
 				print diff.inspect
 				current_user.user_info.update_attributes!(money: diff)
+				print current_user.inspect
 				print current_user.user_info.money.inspect
+				render json: {}, status: :precondition_failed
 
-				@building = @buildings.create(building_params)
+				# @building = @buildings.create(building_params)
 
-				if @building.save!
-				  render json: @building, status: :created
-				else
-				  render json: @building.errors, status: :unprocessable_entity
-				end
+				# if @building.save!
+				#   render json: @building, status: :created
+				# else
+				#   render json: @building.errors, status: :unprocessable_entity
+				# end
 			else
 				render json: {}, status: :precondition_failed
 			end
