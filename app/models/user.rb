@@ -15,9 +15,7 @@ class User < ActiveRecord::Base
   private
 
   def initialize_user
-    self.user_info.money = Settings.user.initial_money
-    self.user_info.level = Settings.user.initial_level
-    # self.money = Settings.user.initial_money
-    # self.level = Settings.user.initial_level
+    print "----------------"
+    self.create_user_info!(money:Settings.user.initial_money,level:Settings.user.initial_level)
   end
 end

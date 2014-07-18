@@ -16,12 +16,12 @@ module V1
 
     	def create
 			
-			if (diff = (current_user.money - @static_building.price)) > 0 
+			if (diff = (current_user.user_info.money - @static_building.price)) > 0 
 				
- 				print current_user.money.inspect
+ 				print current_user.user_info.money.inspect
 				print diff.inspect
-				# current_user.update_attributes!(money: diff)
-				print current_user.money.inspect
+				current_user.user_info.update_attributes!(money: diff)
+				print current_user.user_info.money.inspect
 
 				@building = @buildings.create(building_params)
 
