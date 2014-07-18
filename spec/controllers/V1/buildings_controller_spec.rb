@@ -15,17 +15,21 @@ describe V1::BuildingsController, type: :controller do
       
       describe (".create") do
         context("when user has enough money, ") do
-          
           it ("should correctly create a building") do 
-
-            allow_any_instance_of(StaticBuilding).to receive(:price).and_return(1000)
-            allow_any_instance_of(UserInfo).to receive(:money).and_return(1500)
+            User.find_by_username("user_buildings").user_info.update_attributes!(money: 1500)
             
-            post :create, {building:{static_building_id: "1", map_index: "2"}}
-            # expect(response).to have_http_status 201
-            # expect(Building.last.map_index).to eq(json["map_index"])
-            # expect(current_user.buildings.last.map_index).to eq(json["map_index"])
-            # expect(current_user.user_info.money).to eq 500
+            allow_any_instance_of(StaticBuilding).to receive(:price).and_return(1000)
+            
+            expect {
+              post :create, {building:{static_building_id: "1", map_index: "66"}}
+            }.to change(Building,:count).by(1)
+            
+            expect(response).to have_http_status 201
+            #check models
+            expect(Building.last.map_index).to eq(json["map_index"])
+            expect(current_user.buildings.last.map_index).to eq(json["map_index"])
+            #check money
+            expect(current_user.user_info.money).to eq 500
           end
         end
       #   context("when user doedn't have enough money, ") do

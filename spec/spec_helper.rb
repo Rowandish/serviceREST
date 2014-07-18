@@ -15,7 +15,7 @@ RSpec.configure do |config|
   	load "#{Rails.root}/db/seeds.rb" 
 	end
 
-  ActiveRecord::Base.logger = Logger.new(STDOUT)
+  # ActiveRecord::Base.logger = Logger.new(STDOUT)
 
 end
 
