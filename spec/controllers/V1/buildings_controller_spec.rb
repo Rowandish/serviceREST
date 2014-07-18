@@ -14,11 +14,13 @@ describe V1::BuildingsController, type: :controller do
       subject(:current_user) {User.find_by_username("user_buildings")}
       
       describe (".create") do
+        allow_any_instance_of(StaticBuilding).to receive(:price).and_return(1000)
+        
         context("when user has enough money, ") do
           it ("should correctly create a building") do 
             User.find_by_username("user_buildings").user_info.update_attributes!(money: 1500)
+
             
-            allow_any_instance_of(StaticBuilding).to receive(:price).and_return(1000)
             
             expect {
               post :create, {building:{static_building_id: "1", map_index: "66"}}
@@ -32,13 +34,15 @@ describe V1::BuildingsController, type: :controller do
             expect(current_user.user_info.money).to eq 500
           end
         end
-      #   context("when user doedn't have enough money, ") do
-      #     it ("should respond with an error") do 
-      #       post :create, {building:{static_building_id: "1", map_index: "2"}}
-      #       expect(response).to have_http_status 412
-      #     end
-      #   end
-      # end
+      
+        context("when user doedn't have enough money, ") do
+            it ("should respond with an error") do 
+              User.find_by_username("user_buildings").user_info.update_attributes!(money: 500)
+              post :create, {building:{static_building_id: "1", map_index: "2"}}
+              expect(response).to have_http_status 412
+            end
+          end
+        end
 
       # describe (".index") do
       #   it ("should return all buildings belonged by current user") do 
