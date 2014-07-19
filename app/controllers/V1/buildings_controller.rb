@@ -5,13 +5,12 @@ module V1
 		
 		
 		def index
-			render
+			render status: :ok
 		end
 
     	def show
-			#show faccio vedere sia @building (il mio personale), che le informazini generiche legate al suo static building
 			@building = @buildings.find(params[:id])
-			render
+			render status: :ok
     	end
 
     	def create
@@ -34,8 +33,11 @@ module V1
     	end
 
     	def destroy
-			@buildings.find(params[:id]).destroy
-			render json:{}, status: :ok
+			if @buildings.find(params[:id]).destroy!
+				render json:{}, status: :ok
+			else
+				render json:{}, status: :unprocessable_entity
+			end
     	end
 
     	private
