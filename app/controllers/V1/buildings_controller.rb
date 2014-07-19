@@ -5,31 +5,31 @@ module V1
 		
 		
 		def index
-			render status: :ok
 		end
 
     	def show
 			@building = @buildings.find(params[:id])
-			render status: :ok
     	end
 
     	def create
-			
-			if (diff = (current_user.user_info.money - @static_building.price)) >= 0 
-				
-				current_user.user_info.update_attributes!(money: diff)
+			if @buildings.length < current_user.user_info.max_buildings
+				if (diff = (current_user.user_info.money - @static_building.price)) >= 0 
+					
+					current_user.user_info.update_attributes!(money: diff)
 
-				@building = @buildings.create(building_params)
+					@building = @buildings.create(building_params)
 
-				if @building.save!
-				  render json: @building, status: :created
+					if @building.save!
+					  render json: @building, status: :created
+					else
+					  render json: @building.errors, status: :unprocessable_entity
+					end
 				else
-				  render json: @building.errors, status: :unprocessable_entity
+					render json: {error: "not enough money"}, status: :precondition_failed
 				end
 			else
-				render json: {}, status: :precondition_failed
+				render json: {error: "max buildings limit reached"}, status: :precondition_failed
 			end
-
     	end
 
     	def destroy

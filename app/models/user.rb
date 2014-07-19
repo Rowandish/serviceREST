@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
   private
 
   def initialize_user
-    self.create_user_info!(money:Settings.user.initial_money,level:Settings.user.initial_level)
+    self.create_user_info!(
+      money:Settings.user.initial_money,
+      level:Settings.user.initial_level,
+      max_buildings:Settings.user.initial_max_buildings)
   end
 end
