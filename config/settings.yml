@@ -1,0 +1,12 @@
+user: 
+  initial_money: 1000
+  max_money: 999999
+  initial_level: 1
+  max_level: 99
+  initial_max_buildings: 5
+  max_buildings: 30
+
+buildings:
+  max_map_index: 20
+
+
