@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-trap "kill — -$$" EXIT
-script/bootstrap "$@"
-bundle exec guard start
-

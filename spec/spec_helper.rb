@@ -1,6 +1,7 @@
 require 'devise'
 require 'factory_girl_rails'
-require "rails_helper"
+# require "rails_helper"
+require "support/request_helpers.rb"
 
 RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
