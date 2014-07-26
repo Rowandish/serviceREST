@@ -6,7 +6,7 @@ describe V1::BuildingsController, type: :controller do
   describe 'Building' do
 
     let! (:user) do
-      create(:user_with_buildings,username:"user.buildings")
+      create(:user_with_buildings,username:"user_buildings")
     end
 
     context ("when user is logged in") do
@@ -30,10 +30,10 @@ describe V1::BuildingsController, type: :controller do
               expect(response).to have_http_status 201
               expect(Building.last.map_index).to eq(json["map_index"])
               expect(user.buildings.last.map_index).to eq(json["map_index"])
-              expect(User.find_by_username("user.buildings").user_info.money).to eq 500
+              expect(User.find_by_username("user_buildings").user_info.money).to eq 500
             end
           end
-          context("when user has not enough space to build") do 
+          context("when user has not enough space to build, ") do 
             it ("should respond with an error") do 
               expect {
                 post :create, {building:{static_building_id: "1", map_index: "2"}}
@@ -46,7 +46,7 @@ describe V1::BuildingsController, type: :controller do
       
         context("when user doedn't have enough money, ") do
             it ("should respond with an error") do 
-              User.find_by_username("user.buildings").user_info.update_attributes!(money: 500)
+              User.find_by_username("user_buildings").user_info.update_attributes!(money: 500)
 
               expect {
                 post :create, {building:{static_building_id: "1", map_index: "2"}}
@@ -59,16 +59,29 @@ describe V1::BuildingsController, type: :controller do
       describe (".index") do
         it ("should return all buildings belonged by current user") do 
           get :index
+          print json.inspect
           expect(response).to be_success
           expect(user.buildings.length).to eq(json["buildings"].length)
         end
       end
 
       describe (".show") do
-        it ("should return a particular building") do 
-          get :show, id:user.buildings.first.id
-          expect(response).to be_success
-          expect(user.buildings.first.level).to eq(json["level"])
+        subject(:first_building) {user.buildings.first}
+        context ("when building is not built, ") do
+          it ("should return a building with finished_at a true date") do 
+            first_building.update_attributes!(finished_at: Time.now+1.hours)
+            get :show, id:first_building.id
+            expect(response).to be_success
+            expect(first_building.finished_at.to_s).to eq(json["finished_at"])
+          end
+        end
+        context("when building is fully built, ") do
+          it ("should return a particular building") do 
+            first_building.update_attributes!(finished_at: Time.now-1.hours)
+            get :show, id:first_building.id
+            expect(response).to be_success
+            expect(json["finished_at"]).to eq("completed")
+          end 
         end
       end
 

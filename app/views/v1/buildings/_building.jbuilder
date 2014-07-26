@@ -1,6 +1,11 @@
 json.name building.static_building.name
 json.level building.level
-json.created_at building.created_at
+json.created_at building.created_at.to_s
+if building.finished_at
+	json.finished_at building.finished_at.to_s
+else
+	json.finished_at "completed"
+end
 json.rank building.static_building.rank
 json.max_monster building.static_building.max_monsters
 json.max_level building.static_building.max_level

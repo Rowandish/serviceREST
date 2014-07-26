@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140726211616) do
+ActiveRecord::Schema.define(version: 20140726222332) do
 
   create_table "buildings", force: true do |t|
     t.integer  "user_id"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20140726211616) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "map_index"
-    t.time     "finished_at"
+    t.datetime "finished_at"
   end
 
   create_table "static_buildings", force: true do |t|
