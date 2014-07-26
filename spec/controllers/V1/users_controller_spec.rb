@@ -7,24 +7,26 @@ require 'rails_helper'
 describe V1::UsersController, type: :controller do
   render_views
 
+  let! (:user) do
+      create(:user_with_buildings, username:"my_username")
+    end
+
   describe 'User' do
     describe (".show") do
       context ("when logged in") do
-        before {sign_in_user}
+        before {sign_in_user user}
         it ("should return valid response") do 
           get :show
-          expect(response.status).to eq(200)
-          user_info = JSON.parse(response.body)
-          print user_info.inspect
-          expect(user_info["general_infos"]["token"]).to be_truthy
-          expect(User.find_by_username("user_logged").email).to eq(user_info["general_infos"]["email"])
+          expect(response).to be_success
+          expect(json["general_infos"]["token"]).to be_truthy
+          expect(User.find_by_username("my_username").email).to eq(json["general_infos"]["email"])
         end
       end
       context("when no user logged in") do
         before { sign_out_user }
         it ("should return error response") do
           get :show
-          expect(response.status).to eq(422)
+          expect(response).to have_http_status 422
         end
 
       end

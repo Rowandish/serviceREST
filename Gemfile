@@ -18,6 +18,10 @@ gem 'simple_token_authentication'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'static_model'
+gem "rails_config"
+gem "active_record_bulk_insert"
+gem "rubocop"
+gem "time_diff"
 
 
 
@@ -33,6 +37,7 @@ group :development, :test do
 	gem 'factory_girl_rails'
 	gem 'rspec_api_test'
   	gem 'pry'
+  	gem 'faker'
 end
 
 

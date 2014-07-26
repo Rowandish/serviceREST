@@ -7,9 +7,8 @@ class RegistrationsController < Devise::RegistrationsController
     else
       render :json => @user.errors, status: :unprocessable_entity
     end
-
   end
-  
+
   private
 
   def user_params

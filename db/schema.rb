@@ -11,24 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140709161911) do
+ActiveRecord::Schema.define(version: 20140726222332) do
 
   create_table "buildings", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "static_building_id"
+    t.integer  "level"
+    t.datetime "time_creation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "map_index"
+    t.datetime "finished_at"
+  end
+
+  create_table "static_buildings", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
     t.integer  "rank"
     t.integer  "speed"
     t.integer  "max_level"
+    t.integer  "monster_max"
+    t.integer  "max_monsters"
+    t.integer  "price"
   end
 
-  create_table "userbuildings", force: true do |t|
+  create_table "user_infos", force: true do |t|
     t.integer  "user_id"
-    t.integer  "building_id"
+    t.integer  "money"
     t.integer  "level"
-    t.datetime "time_creation"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "max_buildings"
   end
 
   create_table "users", force: true do |t|
@@ -46,6 +60,7 @@ ActiveRecord::Schema.define(version: 20140709161911) do
     t.datetime "updated_at"
     t.string   "authentication_token"
     t.string   "username"
+    t.integer  "level"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token"
