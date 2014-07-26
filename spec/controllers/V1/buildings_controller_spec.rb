@@ -59,7 +59,6 @@ describe V1::BuildingsController, type: :controller do
       describe (".index") do
         it ("should return all buildings belonged by current user") do 
           get :index
-          print json.inspect
           expect(response).to be_success
           expect(user.buildings.length).to eq(json["buildings"].length)
         end

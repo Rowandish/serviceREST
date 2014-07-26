@@ -7,7 +7,6 @@ FactoryGirl.define do
 	    to   = Time.now + 10.hours
 	    Time.at(from + rand * (to - from))
   	end
-  	# finished_at Time.now + (7-(-8))*prng.rand + (-8).hour
   	user
   end
 end
