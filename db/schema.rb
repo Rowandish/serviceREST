@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140727204011) do
+ActiveRecord::Schema.define(version: 20140727210844) do
 
   create_table "buildings", force: true do |t|
     t.integer  "user_id"
@@ -23,6 +23,22 @@ ActiveRecord::Schema.define(version: 20140727204011) do
     t.integer  "map_index"
     t.datetime "finished_at"
   end
+
+  create_table "monsters", force: true do |t|
+    t.integer  "level"
+    t.integer  "power"
+    t.integer  "agility"
+    t.integer  "mind"
+    t.integer  "charisma"
+    t.integer  "joy"
+    t.integer  "user_id"
+    t.integer  "static_monster_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "monsters", ["static_monster_id"], name: "index_monsters_on_static_monster_id"
+  add_index "monsters", ["user_id"], name: "index_monsters_on_user_id"
 
   create_table "static_buildings", force: true do |t|
     t.datetime "created_at"
