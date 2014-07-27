@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140726222332) do
+ActiveRecord::Schema.define(version: 20140727204011) do
 
   create_table "buildings", force: true do |t|
     t.integer  "user_id"
@@ -34,6 +34,20 @@ ActiveRecord::Schema.define(version: 20140726222332) do
     t.integer  "monster_max"
     t.integer  "max_monsters"
     t.integer  "price"
+  end
+
+  create_table "static_monsters", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.integer  "rank"
+    t.integer  "max_level"
+    t.integer  "price"
+    t.integer  "base_power"
+    t.integer  "base_agility"
+    t.integer  "base_mind"
+    t.integer  "base_charisma"
+    t.integer  "base_joy"
   end
 
   create_table "user_infos", force: true do |t|
