@@ -1,0 +1,12 @@
+- id: 1
+  name: Monster 1
+  rank: 2
+  max_level: 10
+  price: 700 #Prezzo di vendita allo shop
+  base_power: 20
+  base_agility: 10
+  base_mind: 7
+  base_charisma: 2
+  base_joy: 22
+
+

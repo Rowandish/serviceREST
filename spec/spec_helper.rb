@@ -1,11 +1,7 @@
 require 'devise'
 require 'factory_girl_rails'
 require "rails_helper"
-
-# Automigrate if needs migration
-if ActiveRecord::Migrator.needs_migration?
-  ActiveRecord::Migrator.migrate(File.join(Rails.root, 'db/migrate'))
-end
+require "support/request_helpers"
 
 RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
@@ -19,8 +15,6 @@ RSpec.configure do |config|
   	DatabaseCleaner.clean_with(:truncation)
   	load "#{Rails.root}/db/seeds.rb" 
 	end
-
-  # ActiveRecord::Base.logger = Logger.new(STDOUT)
 
 end
 

@@ -12,5 +12,15 @@ FactoryGirl.define do
         create_list(:building, evaluator.buildings_count, user: user)
       end
     end
+
+    factory :user_with_monsters do
+      ignore do
+        monsters_count 5
+      end
+      after(:create) do |user, evaluator|
+        create_list(:monster, evaluator.monsters_count, user: user)
+      end
+    end
+
   end
 end

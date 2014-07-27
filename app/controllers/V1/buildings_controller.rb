@@ -42,6 +42,10 @@ module V1
 			end
     	end
 
+    	def update
+    		
+    	end
+
     	private
 
 			# funzione attualmente a caso, da valutare in seguito l'algoritmo migliore
