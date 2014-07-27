@@ -1,0 +1,9 @@
+json.name monster.static_monster.name
+json.rank monster.static_monster.rank
+json.level monster.level
+json.captured_at monster.created_at.to_s
+json.power monster.power
+json.agility monster.agility
+json.mind monster.mind
+json.charisma monster.charisma
+json.joy monster.joy
